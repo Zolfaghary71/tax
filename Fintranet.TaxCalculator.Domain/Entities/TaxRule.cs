@@ -1,8 +1,9 @@
-﻿using Fintranet.TaxCalculator.Domain.Entities;
+﻿using Fintranet.TaxCalculator.Domain.Common;
+using Fintranet.TaxCalculator.Domain.Entities;
 
-namespace Fintranet.TaxCalculator.Domain.ValueObjects
+namespace Fintranet.TaxCalculator.Domain.Entities
 {
-    public class TaxRule
+    public class TaxRule:BaseEntity
     {
         public City City { get; set; }
         public TimeSpan StartTime { get; set; }

@@ -1,5 +1,4 @@
 ﻿using Fintranet.TaxCalculator.Domain.Entities;
-using Fintranet.TaxCalculator.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fintranet.TaxCalculator.Infrastructure.DbContext
