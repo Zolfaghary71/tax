@@ -1,7 +1,15 @@
 using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.DomainServices.Implementations;
+using Fintranet.TaxCalculator.Infrastructure.Repositories;
+using Fintranet.TaxCalculator.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<TaxCalculatorDbContext>(options =>
+    options.UseInMemoryDatabase("TaxCalculatorDb"));
+
+builder.Services.AddScoped<IPassRepository, PassRepository>();
 
 builder.Services.AddTransient<GothenburgCongestionTaxStratgy>();
 builder.Services.AddTransient<ExternalTaxCalculationStrategy>();
