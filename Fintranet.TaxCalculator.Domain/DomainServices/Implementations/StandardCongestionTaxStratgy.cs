@@ -34,7 +34,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             return taxedPasses;
         }
 
-        private async Task<IEnumerable<Pass>> CalculateDailyTaxAsync(List<Pass> passes)
+        public async Task<IEnumerable<Pass>> CalculateDailyTaxAsync(List<Pass> passes)
         {
             var sortedPasses = passes.OrderBy(p => p.PassTime).ToList();
             var firstPassDate = sortedPasses.First().PassTime.Date;
@@ -45,7 +45,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                 throw new InvalidOperationException("All passes must be on the same day.");
             }
 
-            if (sortedPasses.Any(p => p.Vehicle != firstVehicle))
+            if (sortedPasses.Any(p => p.Vehicle.VehicleType != firstVehicle.VehicleType))
             {
                 throw new InvalidOperationException("All passes must belong to the same vehicle.");
             }
@@ -81,7 +81,8 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
             foreach (var pass in sortedPasses)
             {
-                pass.SupposedTax = GetTaxAmount(pass.PassTime.TimeOfDay);
+                pass.SupposedTax = CalculateSupposedTax(pass.PassTime.TimeOfDay);
+                pass.IsTaxCalculated = true;
                 pass.HighestInTheHour = 0;
             }
 
@@ -113,7 +114,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                    vehicle.VehicleType == VehicleType.ForeignVehicle;
         }
 
-        private decimal GetTaxAmount(TimeSpan timeOfDay)
+        private decimal  CalculateSupposedTax(TimeSpan timeOfDay)
         {
             var rule = _taxRules.FirstOrDefault(r => r.StartTime <= timeOfDay && r.EndTime >= timeOfDay);
             return rule?.Amount ?? 0;

@@ -15,7 +15,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             City = city;
         }
 
-        public Task<IEnumerable<Pass>> CalculateTaxAsync(IEnumerable<Pass> passes)
+        public Task<IEnumerable<Pass>> CalculateDailyTaxAsync(List<Pass> passes)
         {
             throw new NotImplementedException();
         }

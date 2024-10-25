@@ -24,7 +24,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             var city = passes.First().City;
             var strategy = _strategyFactory.GetStrategy(city);
 
-            return await strategy.CalculateTaxAsync(passes);
+            return await strategy.CalculateDailyTaxAsync(passes.ToList());
         }
         private void ValidatePasses(IEnumerable<Pass> passes)
         {

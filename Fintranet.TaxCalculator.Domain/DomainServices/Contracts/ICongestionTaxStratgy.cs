@@ -6,6 +6,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Contracts
 {
     public interface ICongestionTaxStratgy
     {
-        Task<IEnumerable<Pass>> CalculateTaxAsync(IEnumerable<Pass> passes);
+        public Task<IEnumerable<Pass>> CalculateDailyTaxAsync(List<Pass> passes);
+
     }
 }
