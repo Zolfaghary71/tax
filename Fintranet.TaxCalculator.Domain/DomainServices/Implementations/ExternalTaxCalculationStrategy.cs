@@ -1,9 +1,7 @@
 ﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
-using System.Collections.Generic;
-using Fintranet.TaxCalculator.Domain.Services;
 
-namespace Fintranet.TaxCalculator.Domain.DomainServices.Implmentations
+namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 {
     public class ExternalTaxCalculationStrategy : ICongestionTaxStratgy
     {

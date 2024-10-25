@@ -1,7 +1,7 @@
 ﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
 
-namespace Fintranet.TaxCalculator.Domain.DomainServices.Implmentations
+namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 {
     public class GothenburgCongestionTaxStratgy : ICongestionTaxStratgy
     {
@@ -24,7 +24,6 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implmentations
 
         public IEnumerable<Pass> CalculateTax(IEnumerable<Pass> passes)
         {
-            ValidatePasses(passes);
 
             var passesByDay = passes.GroupBy(p => p.PassTime.Date);
             var taxedPasses = new List<Pass>();
@@ -35,22 +34,6 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implmentations
             }
 
             return taxedPasses;
-        }
-
-        private void ValidatePasses(IEnumerable<Pass> passes)
-        {
-            var firstPass = passes.First();
-            var city = firstPass.City;
-            var vehicle = firstPass.Vehicle;
-            var year = firstPass.PassTime.Year;
-
-            foreach (var pass in passes)
-            {
-                if (pass.City != city || pass.Vehicle != vehicle || pass.PassTime.Year != year)
-                {
-                    throw new InvalidOperationException("All passes must have the same city, vehicle, and year.");
-                }
-            }
         }
 
         private IEnumerable<Pass> CalculateDailyTax(List<Pass> passes)

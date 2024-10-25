@@ -2,8 +2,8 @@
 
 namespace Fintranet.TaxCalculator.Domain.DomainServices.Contracts
 {
-    public interface IExternalTaxService
+    public interface ICongestionTaxStrategyFactory
     {
-        decimal GetTaxAmount(DateTime passTime, Vehicle vehicle, City city);
+        ICongestionTaxStratgy GetStrategy(City city);
     }
 }
