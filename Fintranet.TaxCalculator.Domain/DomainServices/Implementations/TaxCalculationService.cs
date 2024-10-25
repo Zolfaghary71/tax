@@ -12,7 +12,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             _strategyFactory = strategyFactory;
         }
 
-        public IEnumerable<Pass> CalculateTax(IEnumerable<Pass> passes)
+        public async Task<IEnumerable<Pass>>  CalculateTax(IEnumerable<Pass> passes)
         {
             ValidatePasses(passes);
             
@@ -24,7 +24,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             var city = passes.First().City;
             var strategy = _strategyFactory.GetStrategy(city);
 
-            return strategy.CalculateTax(passes);
+            return await strategy.CalculateTaxAsync(passes);
         }
         private void ValidatePasses(IEnumerable<Pass> passes)
         {

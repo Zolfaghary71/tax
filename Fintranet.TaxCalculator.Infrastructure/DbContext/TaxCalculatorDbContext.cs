@@ -9,5 +9,6 @@ namespace Fintranet.TaxCalculator.Infrastructure
 
         public DbSet<Pass> Passes { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<TaxRule> TaxRules { get; set; }
     }
 }

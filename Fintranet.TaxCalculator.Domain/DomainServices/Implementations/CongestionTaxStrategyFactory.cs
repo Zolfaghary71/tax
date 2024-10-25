@@ -13,7 +13,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             _serviceProvider = serviceProvider;
             _strategyMap = new Dictionary<City, Type>
             {
-                { City.Gothenburg, typeof(GothenburgCongestionTaxStratgy) },
+                { City.Gothenburg, typeof(StandardCongestionTaxStratgy) },
             };
         }
 

@@ -3,40 +3,38 @@ using Fintranet.TaxCalculator.Domain.Entities;
 
 namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 {
-    public class GothenburgCongestionTaxStratgy : ICongestionTaxStratgy
+    public class StandardCongestionTaxStratgy : ICongestionTaxStratgy
     {
-        public City City => City.Gothenburg;
+        public City City { get; }
 
         private const decimal DailyMaxTax = 60m;
-        private static readonly List<(TimeSpan StartTime, TimeSpan EndTime, decimal Amount)> TaxRules = new()
-        {
-            (new TimeSpan(6, 0, 0), new TimeSpan(6, 29, 0), 8),
-            (new TimeSpan(6, 30, 0), new TimeSpan(6, 59, 0), 13),
-            (new TimeSpan(7, 0, 0), new TimeSpan(7, 59, 0), 18),
-            (new TimeSpan(8, 0, 0), new TimeSpan(8, 29, 0), 13),
-            (new TimeSpan(8, 30, 0), new TimeSpan(14, 59, 0), 8),
-            (new TimeSpan(15, 0, 0), new TimeSpan(15, 29, 0), 13),
-            (new TimeSpan(15, 30, 0), new TimeSpan(16, 59, 0), 18),
-            (new TimeSpan(17, 0, 0), new TimeSpan(17, 59, 0), 13),
-            (new TimeSpan(18, 0, 0), new TimeSpan(18, 29, 0), 8),
-            (new TimeSpan(18, 30, 0), new TimeSpan(5, 59, 0), 0)
-        };
+        private IEnumerable<TaxRule> _taxRules;
 
-        public IEnumerable<Pass> CalculateTax(IEnumerable<Pass> passes)
+        public StandardCongestionTaxStratgy(City city, ITaxRuleRepository taxRuleRepository)
         {
+            City = city;
+            InitializeAsync(taxRuleRepository).Wait();
+        }
 
+        private async Task InitializeAsync(ITaxRuleRepository taxRuleRepository)
+        {
+            _taxRules = await taxRuleRepository.GetTaxRulesAsync(City);
+        }
+
+        public async Task<IEnumerable<Pass>> CalculateTaxAsync(IEnumerable<Pass> passes)
+        {
             var passesByDay = passes.GroupBy(p => p.PassTime.Date);
             var taxedPasses = new List<Pass>();
 
             foreach (var dayPasses in passesByDay)
             {
-                taxedPasses.AddRange(CalculateDailyTax(dayPasses.ToList()));
+                taxedPasses.AddRange(await CalculateDailyTaxAsync(dayPasses.ToList()));
             }
 
             return taxedPasses;
         }
 
-        private IEnumerable<Pass> CalculateDailyTax(List<Pass> passes)
+        private async Task<IEnumerable<Pass>> CalculateDailyTaxAsync(List<Pass> passes)
         {
             var sortedPasses = passes.OrderBy(p => p.PassTime).ToList();
             decimal dailyTotal = 0;
@@ -91,8 +89,8 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
         private decimal GetTaxAmount(TimeSpan timeOfDay)
         {
-            var rule = TaxRules.FirstOrDefault(r => r.StartTime <= timeOfDay && r.EndTime >= timeOfDay);
-            return rule.Amount;
+            var rule = _taxRules.FirstOrDefault(r => r.StartTime <= timeOfDay && r.EndTime >= timeOfDay);
+            return rule?.Amount ?? 0;
         }
     }
 }

@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Fintranet.TaxCalculator.Domain.DomainServices.Contracts
 {
-    public interface ICongestionTaxStratgy
+    public interface ITaxRuleRepository
     {
-        Task<IEnumerable<Pass>> CalculateTaxAsync(IEnumerable<Pass> passes);
+        Task<IEnumerable<TaxRule>> GetTaxRulesAsync(City city);
     }
 }

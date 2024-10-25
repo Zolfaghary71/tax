@@ -10,8 +10,9 @@ builder.Services.AddDbContext<TaxCalculatorDbContext>(options =>
     options.UseInMemoryDatabase("TaxCalculatorDb"));
 
 builder.Services.AddScoped<IPassRepository, PassRepository>();
+builder.Services.AddScoped<ITaxRuleRepository, TaxRuleRepository>();
 
-builder.Services.AddTransient<GothenburgCongestionTaxStratgy>();
+builder.Services.AddTransient<StandardCongestionTaxStratgy>();
 builder.Services.AddTransient<ExternalTaxCalculationStrategy>();
 
 builder.Services.AddSingleton<ICongestionTaxStrategyFactory, CongestionTaxStrategyFactory>();
