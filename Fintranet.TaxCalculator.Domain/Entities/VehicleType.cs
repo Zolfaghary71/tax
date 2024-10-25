@@ -8,7 +8,7 @@ public enum VehicleType
     EmergencyVehicle,
     Bus,
     DiplomatVehicle,
-    Motorcycles,
-    MilitaryVehicles,
-    ForeignVehicles
+    Motorcycle,
+    MilitaryVehicle,
+    ForeignVehicle
 }
