@@ -1,5 +1,6 @@
 ﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
+using Fintranet.TaxCalculator.Domain.ValueObjects;
 
 namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 {

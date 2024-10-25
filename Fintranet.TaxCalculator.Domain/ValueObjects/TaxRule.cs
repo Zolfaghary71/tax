@@ -1,4 +1,6 @@
-﻿namespace Fintranet.TaxCalculator.Domain.Entities
+﻿using Fintranet.TaxCalculator.Domain.Entities;
+
+namespace Fintranet.TaxCalculator.Domain.ValueObjects
 {
     public class TaxRule
     {

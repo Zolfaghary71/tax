@@ -2,6 +2,7 @@ using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.DomainServices.Implementations;
 using Fintranet.TaxCalculator.Infrastructure.Repositories;
 using Fintranet.TaxCalculator.Infrastructure;
+using Fintranet.TaxCalculator.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

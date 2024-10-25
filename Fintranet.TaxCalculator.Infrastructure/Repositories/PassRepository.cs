@@ -1,5 +1,6 @@
 ﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
+using Fintranet.TaxCalculator.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fintranet.TaxCalculator.Infrastructure.Repositories
