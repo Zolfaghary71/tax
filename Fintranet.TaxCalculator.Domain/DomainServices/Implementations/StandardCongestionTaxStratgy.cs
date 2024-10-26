@@ -78,6 +78,8 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
         private IEnumerable<Pass> CalculateSupposedAndHighestTax(List<Pass> sortedPasses)
         {
             decimal dailyTotal = 0;
+            decimal dailyMax = 60;
+            bool exceededTheDailyMax = false;
 
             foreach (var pass in sortedPasses)
             {
@@ -92,6 +94,17 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                 if (lastHighest == null || lastHighest.PassTime.AddMinutes(60) < pass.PassTime)
                 {
                     pass.HighestInTheHour = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
+                    dailyTotal = pass.HighestInTheHour;
+
+                    var dailySum = sortedPasses.Where(p => p.IsTheHighestTax).Select(p => p.HighestInTheHour).Sum();
+                    if (dailySum >= dailyTotal)
+                    {
+                        if (dailySum > dailyTotal)
+                            pass.HighestInTheHour -= dailySum - dailyMax;
+                        
+                        break;
+                    }
+
                     pass.IsTheHighestTax = true;
                     lastHighest = pass;
                     continue;
@@ -114,7 +127,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                    vehicle.VehicleType == VehicleType.ForeignVehicle;
         }
 
-        private decimal  CalculateSupposedTax(TimeSpan timeOfDay)
+        private decimal CalculateSupposedTax(TimeSpan timeOfDay)
         {
             var rule = _taxRules.FirstOrDefault(r => r.StartTime <= timeOfDay && r.EndTime >= timeOfDay);
             return rule?.Amount ?? 0;
