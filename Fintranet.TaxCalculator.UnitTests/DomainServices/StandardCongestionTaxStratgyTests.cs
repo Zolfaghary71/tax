@@ -99,19 +99,25 @@ public class StandardCongestionTaxStratgyTests
         };
 
         var groupedPasses = passes.GroupBy(p => p.PassTime.Date);
-
-        // Act & Assert
+        var totalTaxList = new List<decimal>();
         foreach (var group in groupedPasses)
         {
             var result = await _strategy.CalculateDailyTaxAsync(group.ToList());
-
-            // Verify that the tax is calculated correctly for each pass
+            totalTaxList.Add(result.Sum(p => p.ActualTax));
+            
             foreach (var pass in result)
             {
                 Assert.True(pass.IsTaxCalculated);
                 Assert.NotNull(pass.SupposedTax);
-                // Add more specific assertions based on your tax calculation logic
             }
         }
+
+        Assert.Equal(0, totalTaxList[0]);
+        Assert.Equal(0, totalTaxList[1]);
+        Assert.Equal(21, totalTaxList[2]);
+        Assert.Equal(60, totalTaxList[3]);
+        Assert.Equal(8, totalTaxList[4]);
+        Assert.Equal(0, totalTaxList[5]);
+
     }
 }

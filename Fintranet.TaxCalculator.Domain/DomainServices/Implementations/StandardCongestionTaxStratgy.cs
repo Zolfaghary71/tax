@@ -72,10 +72,10 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                 return sortedPasses;
             }
 
-            return CalculateSupposedAndHighestTax(sortedPasses);
+            return CalculateTax(sortedPasses);
         }
 
-        private IEnumerable<Pass> CalculateSupposedAndHighestTax(List<Pass> sortedPasses)
+        private IEnumerable<Pass> CalculateTax(List<Pass> sortedPasses)
         {
             decimal dailyTotal = 0;
             decimal dailyMax = 60;
@@ -108,12 +108,13 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                 }
 
                 lastHighest.ActualTax = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
-                pass.IsTheHighestTax = false;
-                var dailytotal = sortedPasses.Where(p => p.IsTheHighestTax).Select(p => p.ActualTax).Sum();
-                if (dailytotal >= dailyMax)
+                pass.IsTheHighestTax = false; 
+                
+                dailyTotal = sortedPasses.Where(p => p.IsTheHighestTax).Select(p => p.ActualTax).Sum();
+                if (dailyTotal >= dailyMax)
                 {
-                    if (dailytotal > dailyMax)
-                        pass.ActualTax -= dailytotal - dailyMax;
+                    if (dailyTotal > dailyMax)
+                        pass.ActualTax -= dailyTotal - dailyMax;
                     break;
                 }
             }
