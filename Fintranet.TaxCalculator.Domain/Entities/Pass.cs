@@ -8,7 +8,6 @@ public class Pass:BaseEntity
     public Vehicle Vehicle { get; set; }
     public City City { get; set; }
     public decimal? SupposedTax { get; set; }
-    public TaxDetailType TaxDetail { get; set; }
     public bool IsTaxCalculated { get; set; }
     public bool IsTheHighestTax { get; set; }
     public decimal HighestInTheHour { get; set; }
