@@ -116,4 +116,56 @@ public class StandardCongestionTaxStratgyTests
         Assert.Equal(8, totalTaxList[4]);
         Assert.Equal(0, totalTaxList[5]);
     }
+
+    [Fact]
+    public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentCities()
+    {
+        var passes = new List<Pass>
+        {
+            new Pass { PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg },
+            new Pass { PassTime = new DateTime(2013, 1, 14, 22, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Stockholm }
+        };
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => _strategy.CalculateDailyTaxAsync(passes));
+    }
+
+    [Fact]
+    public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentVehicles()
+    {
+        var passes = new List<Pass>
+        {
+            new Pass { PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg },
+            new Pass { PassTime = new DateTime(2013, 1, 14, 22, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Motorcycle }, City = City.Gothenburg }
+        };
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => _strategy.CalculateDailyTaxAsync(passes));
+    }
+
+    [Fact]
+    public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentYears()
+    {
+        var passes = new List<Pass>
+        {
+            new Pass { PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg },
+            new Pass { PassTime = new DateTime(2014, 1, 14, 22, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg }
+        };
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => _strategy.CalculateDailyTaxAsync(passes));
+    }
+
+    [Fact]
+    public async Task CalculateDailyTaxAsync_ShouldSetTaxToZero_ForExemptDays()
+    {
+        var passes = new List<Pass>
+        {
+            new Pass { PassTime = new DateTime(2013, 1, 1, 6, 27, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg }, // Public holiday
+            new Pass { PassTime = new DateTime(2013, 1, 1, 6, 47, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg }, // July
+            new Pass { PassTime = new DateTime(2013, 1, 1, 6, 37, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car }, City = City.Gothenburg } // Christmas
+        };
+
+        var result = await _strategy.CalculateDailyTaxAsync(passes);
+
+        Assert.All(result, pass => Assert.Equal(0, pass.SupposedTax));
+    }
 }
+

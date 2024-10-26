@@ -39,7 +39,12 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             var sortedPasses = passes.OrderBy(p => p.PassTime).ToList();
             var firstPassDate = sortedPasses.First().PassTime.Date;
             var firstVehicle = sortedPasses.First().Vehicle;
-
+            var firstCity = sortedPasses.First().City;
+            
+            if (sortedPasses.Any(p => p.City != firstCity))
+            {
+                throw new InvalidOperationException("All passes must be from the same city.");
+            }
             if (sortedPasses.Any(p => p.PassTime.Date != firstPassDate))
             {
                 throw new InvalidOperationException("All passes must be on the same day.");
