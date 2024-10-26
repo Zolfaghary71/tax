@@ -1,7 +1,7 @@
 ﻿using Fintranet.TaxCalculator.Domain.Entities;
 using MediatR;
 
-namespace Fintranet.TaxCalculator.Application.Features.Pass.Command.Update
+namespace Fintranet.TaxCalculator.Application.Features.Passes.Command.Update
 {
     public class UpdatePassCommand : IRequest<Domain.Entities.Pass>
     {

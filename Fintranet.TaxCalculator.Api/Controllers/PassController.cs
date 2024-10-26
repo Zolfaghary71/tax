@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Fintranet.TaxCalculator.Application.Features.Pass.Command.Create;
-using Fintranet.TaxCalculator.Application.Features.Pass.Command.Delete;
-using Fintranet.TaxCalculator.Application.Features.Pass.Command.Update;
-using Fintranet.TaxCalculator.Application.Features.Pass.Queries;
-using Fintranet.TaxCalculator.Application.Features.Pass.Queries.GetById;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.Create;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.Delete;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.Update;
+using Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll;
+using Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetById;
 
 namespace Fintranet.TaxCalculator.Api.Controllers
 {
@@ -55,7 +55,7 @@ namespace Fintranet.TaxCalculator.Api.Controllers
         {
             var command = new DeletePassCommand { Id = id };
             var result = await _mediator.Send(command);
-            if (!result)
+            if (result==null)
             {
                 return NotFound();
             }

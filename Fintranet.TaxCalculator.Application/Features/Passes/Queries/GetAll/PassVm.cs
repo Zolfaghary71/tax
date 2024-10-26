@@ -1,6 +1,6 @@
-﻿namespace Fintranet.TaxCalculator.Application.Features.Pass.Queries
+﻿namespace Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll
 {
-    public class PassDto
+    public class PassVm
     {
         public Guid Id { get; set; }
         public decimal Tax { get; set; }

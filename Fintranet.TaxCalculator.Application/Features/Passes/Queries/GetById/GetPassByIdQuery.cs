@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Fintranet.TaxCalculator.Application.Features.Pass.Queries.GetById
+namespace Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetById
 {
     public class GetPassByIdQuery : IRequest<Domain.Entities.Pass>
     {

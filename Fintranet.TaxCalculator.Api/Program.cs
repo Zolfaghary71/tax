@@ -6,7 +6,7 @@ using Fintranet.TaxCalculator.Infrastructure.DbContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using Fintranet.TaxCalculator.Application.Features.Pass.Handlers;
+using Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll;
 
 var builder = WebApplication.CreateBuilder(args);
 

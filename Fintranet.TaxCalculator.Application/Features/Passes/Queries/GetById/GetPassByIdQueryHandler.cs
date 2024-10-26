@@ -1,7 +1,7 @@
 ﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using MediatR;
 
-namespace Fintranet.TaxCalculator.Application.Features.Pass.Queries.GetById
+namespace Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetById
 {
     public class GetPassByIdQueryHandler : IRequestHandler<GetPassByIdQuery, Domain.Entities.Pass>
     {
