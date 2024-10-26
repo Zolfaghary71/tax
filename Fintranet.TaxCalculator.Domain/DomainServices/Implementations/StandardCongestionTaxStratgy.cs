@@ -21,20 +21,20 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             _taxRules = await taxRuleRepository.GetTaxRulesAsync(City);
         }
 
-        public async Task<IEnumerable<Pass>> CalculateTaxAsync(IEnumerable<Pass> passes)
+        public  IEnumerable<Pass> CalculateTaxAsync(IEnumerable<Pass> passes)
         {
             var passesByDay = passes.GroupBy(p => p.PassTime.Date);
             var taxedPasses = new List<Pass>();
 
             foreach (var dayPasses in passesByDay)
             {
-                taxedPasses.AddRange(await CalculateDailyTaxAsync(dayPasses.ToList()));
+                taxedPasses.AddRange( CalculateDailyTax(dayPasses.ToList()));
             }
 
             return taxedPasses;
         }
 
-        public async Task<IEnumerable<Pass>> CalculateDailyTaxAsync(List<Pass> passes)
+        public IEnumerable<Pass> CalculateDailyTax(List<Pass> passes)
         {
             var sortedPasses = passes.OrderBy(p => p.PassTime).ToList();
             var firstPassDate = sortedPasses.First().PassTime.Date;
@@ -84,7 +84,6 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
         {
             decimal dailyTotal = 0;
             decimal dailyMax = 60;
-            bool exceededTheDailyMax = false;
 
             foreach (var pass in sortedPasses)
             {

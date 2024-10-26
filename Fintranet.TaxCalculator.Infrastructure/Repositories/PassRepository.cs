@@ -1,7 +1,10 @@
-﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
+﻿using Fintranet.TaxCalculator.Application;
+using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
 using Fintranet.TaxCalculator.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Fintranet.TaxCalculator.Infrastructure.Repositories
 {
@@ -36,14 +39,15 @@ namespace Fintranet.TaxCalculator.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Pass pass)
         {
-            var pass = await _context.Passes.FindAsync(id);
-            if (pass != null)
-            {
-                _context.Passes.Remove(pass);
-                await _context.SaveChangesAsync();
-            }
+            _context.Passes.Remove(pass);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Vehicle> GetVehicleByIdAsync(int vehicleId)
+        {
+            return await _context.Vehicles.FindAsync(vehicleId);
         }
     }
 }
