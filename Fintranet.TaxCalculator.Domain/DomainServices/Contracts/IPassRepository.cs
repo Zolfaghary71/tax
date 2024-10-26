@@ -10,5 +10,6 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Contracts
         Task UpdateAsync(Pass pass);
         Task DeleteAsync(Pass pass);
         Task<Vehicle> GetVehicleByIdAsync(Guid vehicleId);
+        Task<IEnumerable<Pass>> GetPassesByVehicleIdAsync(Guid vehicleId); // New method
     }
 }

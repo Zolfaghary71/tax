@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.CalculateTaxes;
 using Fintranet.TaxCalculator.Application.Features.Passes.Command.Create;
 using Fintranet.TaxCalculator.Application.Features.Passes.Command.Delete;
 using Fintranet.TaxCalculator.Application.Features.Passes.Command.Update;
@@ -66,6 +67,12 @@ namespace Fintranet.TaxCalculator.Api.Controllers
         public async Task<IActionResult> GetAllPasses()
         {
             var result = await _mediator.Send(new GetAllPassesQuery());
+            return Ok(result);
+        }
+        [HttpPost("calculate-taxes")]
+        public async Task<IActionResult> CalculateTaxes([FromBody] CalculateTaxesCommand command)
+        {
+            var result = await _mediator.Send(command);
             return Ok(result);
         }
     }

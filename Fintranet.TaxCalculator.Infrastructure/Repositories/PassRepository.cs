@@ -47,5 +47,9 @@ namespace Fintranet.TaxCalculator.Infrastructure.Repositories
         {
             return await _context.Vehicles.FindAsync(vehicleId);
         }
+        public async Task<IEnumerable<Pass>> GetPassesByVehicleIdAsync(Guid vehicleId)
+        {
+            return await _context.Passes.Where(p => p.VehicleId == vehicleId).ToListAsync();
+        }
     }
 }
