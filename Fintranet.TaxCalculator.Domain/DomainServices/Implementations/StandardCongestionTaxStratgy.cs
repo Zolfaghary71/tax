@@ -23,7 +23,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
         public  IEnumerable<Pass> CalculateTaxAsync(IEnumerable<Pass> passes)
         {
-            var passesByDay = passes.GroupBy(p => p.PassTime.Date);
+            var passesByDay = passes.GroupBy(p => p.PassDateTime.Date);
             var taxedPasses = new List<Pass>();
 
             foreach (var dayPasses in passesByDay)
@@ -36,8 +36,8 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
         public IEnumerable<Pass> CalculateDailyTax(List<Pass> passes)
         {
-            var sortedPasses = passes.OrderBy(p => p.PassTime).ToList();
-            var firstPassDate = sortedPasses.First().PassTime.Date;
+            var sortedPasses = passes.OrderBy(p => p.PassDateTime).ToList();
+            var firstPassDate = sortedPasses.First().PassDateTime.Date;
             var firstVehicle = sortedPasses.First().Vehicle;
             var firstCity = sortedPasses.First().City;
             
@@ -45,7 +45,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             {
                 throw new InvalidOperationException("All passes must be from the same city.");
             }
-            if (sortedPasses.Any(p => p.PassTime.Date != firstPassDate))
+            if (sortedPasses.Any(p => p.PassDateTime.Date != firstPassDate))
             {
                 throw new InvalidOperationException("All passes must be on the same day.");
             }
@@ -87,7 +87,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
             foreach (var pass in sortedPasses)
             {
-                pass.SupposedTax = CalculateSupposedTax(pass.PassTime.TimeOfDay);
+                pass.SupposedTax = CalculateSupposedTax(pass.PassDateTime.TimeOfDay);
                 pass.IsTaxCalculated = true;
                 pass.ActualTax = 0;
             }
@@ -95,7 +95,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             Pass lastHighest = null;
             foreach (var pass in sortedPasses)
             {
-                if (lastHighest == null || lastHighest.PassTime.AddMinutes(60) < pass.PassTime)
+                if (lastHighest == null || lastHighest.PassDateTime.AddMinutes(60) < pass.PassDateTime)
                 {
                     pass.ActualTax = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
                     pass.IsTheHighestTax = true;
@@ -144,10 +144,10 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
         private decimal CalculateHighestTaxLast60Minutes(Pass currentPass, List<Pass> sortedPasses)
         {
-            var oneHourAgo = currentPass.PassTime.AddMinutes(-60);
+            var oneHourAgo = currentPass.PassDateTime.AddMinutes(-60);
 
             var recentPasses = sortedPasses
-                .Where(p => p.PassTime >= oneHourAgo && p.PassTime <= currentPass.PassTime)
+                .Where(p => p.PassDateTime >= oneHourAgo && p.PassDateTime <= currentPass.PassDateTime)
                 .Select(p => p.SupposedTax ?? 0);
 
             return recentPasses.Any() ? recentPasses.Max() : 0;

@@ -39,11 +39,11 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2023, 10, 10, 8, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Bus}
+                PassDateTime = new DateTime(2023, 10, 10, 8, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Bus}
             },
             new Pass
             {
-                PassTime = new DateTime(2023, 10, 10, 9, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Bus}
+                PassDateTime = new DateTime(2023, 10, 10, 9, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Bus}
             }
         };
 
@@ -61,67 +61,67 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 15, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 1, 15, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 7, 6, 23, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 7, 6, 23, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 7, 15, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 7, 15, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 6, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 6, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 6, 20, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 6, 20, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 14, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 14, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 15, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 15, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 15, 47, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 15, 47, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 16, 1, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 16, 1, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 16, 48, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 16, 48, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 17, 49, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 17, 49, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 18, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 18, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 18, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 18, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 3, 26, 14, 25, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 3, 26, 14, 25, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 3, 28, 14, 7, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 3, 28, 14, 7, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             }
         };
 
@@ -135,71 +135,71 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 15, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 1, 15, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 7, 6, 23, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 7, 6, 23, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 7, 15, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 7, 15, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 6, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 6, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 6, 20, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 6, 20, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 14, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 14, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 15, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 15, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 15, 47, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 15, 47, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 16, 1, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 16, 1, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 16, 48, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 16, 48, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 17, 49, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 17, 49, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 18, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 18, 29, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 2, 8, 18, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 2, 8, 18, 35, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 3, 26, 14, 25, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 3, 26, 14, 25, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 3, 28, 14, 7, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
+                PassDateTime = new DateTime(2013, 3, 28, 14, 7, 27), Vehicle = new Vehicle {VehicleType = VehicleType.Car}
             }
         };
 
-        var groupedPasses = passes.GroupBy(p => p.PassTime.Date);
+        var groupedPasses = passes.GroupBy(p => p.PassDateTime.Date);
         var totalTaxList = new List<decimal>();
         foreach (var group in groupedPasses)
         {
@@ -228,12 +228,12 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 22, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 14, 22, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Stockholm
             }
         };
@@ -248,12 +248,12 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             },
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 22, 0, 0),
+                PassDateTime = new DateTime(2013, 1, 14, 22, 0, 0),
                 Vehicle = new Vehicle {VehicleType = VehicleType.Motorcycle}, City = City.Gothenburg
             }
         };
@@ -268,12 +268,12 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             },
             new Pass
             {
-                PassTime = new DateTime(2014, 1, 14, 22, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2014, 1, 14, 22, 0, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             }
         };
@@ -288,17 +288,17 @@ public class StandardCongestionTaxStratgyTests
         {
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 1, 6, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 1, 6, 27, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             }, // Public holiday
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 1, 6, 47, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 1, 6, 47, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             }, // July
             new Pass
             {
-                PassTime = new DateTime(2013, 1, 1, 6, 37, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
+                PassDateTime = new DateTime(2013, 1, 1, 6, 37, 0), Vehicle = new Vehicle {VehicleType = VehicleType.Car},
                 City = City.Gothenburg
             } // Christmas
         };

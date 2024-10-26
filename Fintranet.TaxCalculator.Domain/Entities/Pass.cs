@@ -4,7 +4,7 @@ namespace Fintranet.TaxCalculator.Domain.Entities;
 
 public class Pass:BaseEntity
 {
-    public DateTime PassTime { get; set; }
+    public DateTime PassDateTime { get; set; }
     public Vehicle Vehicle { get; set; }
     public City City { get; set; }
     public decimal? SupposedTax { get; set; }

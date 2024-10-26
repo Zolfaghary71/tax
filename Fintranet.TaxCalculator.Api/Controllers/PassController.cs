@@ -69,8 +69,7 @@ namespace Fintranet.TaxCalculator.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPasses()
         {
-            var query = new GetAllPassesQuery();
-            var result = await _mediator.Send(query);
+            var result = await _mediator.Send(new GetAllPassesQuery());
             return Ok(result);
         }
     }

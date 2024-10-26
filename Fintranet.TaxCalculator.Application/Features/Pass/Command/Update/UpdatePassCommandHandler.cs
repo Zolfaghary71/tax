@@ -20,7 +20,7 @@ namespace Fintranet.TaxCalculator.Application.Features.Pass.Command.Update
                 return null;
             }
 
-            pass.PassTime = request.PassTime;
+            pass.PassDateTime = request.PassTime;
             pass.Vehicle = await _passRepository.GetVehicleByIdAsync(request.VehicleId);
             pass.City = request.City;
 

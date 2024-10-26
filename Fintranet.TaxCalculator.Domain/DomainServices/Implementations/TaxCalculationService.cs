@@ -31,11 +31,11 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             var firstPass = passes.First();
             var city = firstPass.City;
             var vehicle = firstPass.Vehicle;
-            var year = firstPass.PassTime.Year;
+            var year = firstPass.PassDateTime.Year;
 
             foreach (var pass in passes)
             {
-                if (pass.City != city || pass.Vehicle != vehicle || pass.PassTime.Year != year)
+                if (pass.City != city || pass.Vehicle != vehicle || pass.PassDateTime.Year != year)
                 {
                     throw new InvalidOperationException("All passes must have the same city, vehicle, and year.");
                 }

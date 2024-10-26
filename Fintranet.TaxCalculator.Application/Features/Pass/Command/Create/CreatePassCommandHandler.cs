@@ -16,7 +16,7 @@ namespace Fintranet.TaxCalculator.Application.Features.Pass.Command.Create
         {
             var pass = new Domain.Entities.Pass
             {
-                PassTime = request.PassTime,
+                PassDateTime = request.PassTime,
                 Vehicle = await _passRepository.GetVehicleByIdAsync(request.VehicleId),
                 City = request.City
             };
