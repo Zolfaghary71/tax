@@ -1,4 +1,5 @@
-﻿using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
+﻿using Fintranet.TaxCalculator.Application.Profiles;
+using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
 using FluentValidation;
 using MediatR;
@@ -24,12 +25,7 @@ namespace Fintranet.TaxCalculator.Application.Features.Passes.Command.Create
                 throw new ValidationException(validationResult.Errors);
             }
 
-            var pass = new Pass
-            {
-                PassDateTime = request.PassTime,
-                Vehicle = await _passRepository.GetVehicleByIdAsync(request.VehicleId),
-                City = request.City
-            };
+            var pass = request.ToPass();
 
             await _passRepository.AddAsync(pass);
             return pass;

@@ -2,7 +2,7 @@
 
 namespace Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll;
 
-public class GetAllPassesQuery: IRequest<List<PassVm>>
+public class GetAllPassesQuery: IRequest<List<PassViewModel>>
 {
     
 }

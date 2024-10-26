@@ -35,5 +35,43 @@ namespace Fintranet.TaxCalculator.Application.Profiles
                 Id = pass.Id
             };
         }
+
+        public static Pass ToPass(this CreatePassViewModel viewModel)
+        {
+            return new Pass
+            {
+                PassDateTime = viewModel.PassTime,
+                VehicleId = viewModel.VehicleId,
+                City = viewModel.City
+            };
+        }
+
+        public static Pass ToPass(this UpdatePassViewModel viewModel)
+        {
+            return new Pass
+            {
+                Id = viewModel.Id,
+                PassDateTime = viewModel.PassTime,
+                VehicleId = viewModel.VehicleId,
+                City = viewModel.City
+            };
+        }
+
+        public static Pass ToPass(this DeletePassViewModel viewModel)
+        {
+            return new Pass
+            {
+                Id = viewModel.Id
+            };
+        }
+        public static Pass ToPass(this CreatePassCommand command)
+        {
+            return new Pass
+            {
+                PassDateTime = command.PassTime,
+                VehicleId = command.VehicleId,
+                City = command.City
+            };
+        }
     }
 }

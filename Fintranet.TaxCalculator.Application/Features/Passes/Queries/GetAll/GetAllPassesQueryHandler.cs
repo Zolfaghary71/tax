@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll
 {
-    public class GetAllPassesQueryHandler : IRequestHandler<GetAllPassesQuery, List<PassVm>>
+    public class GetAllPassesQueryHandler : IRequestHandler<GetAllPassesQuery, List<PassViewModel>>
     {
         private readonly IPassRepository _passRepository;
 
@@ -12,10 +12,10 @@ namespace Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll
             _passRepository = passRepository;
         }
 
-        public async Task<List<PassVm>> Handle(GetAllPassesQuery request, CancellationToken cancellationToken)
+        public async Task<List<PassViewModel>> Handle(GetAllPassesQuery request, CancellationToken cancellationToken)
         {
             var passes = await _passRepository.GetAllAsync();
-            return passes.Select(p => new PassVm
+            return passes.Select(p => new PassViewModel
             {
                 Id = p.Id,
                 Tax = p.ActualTax,

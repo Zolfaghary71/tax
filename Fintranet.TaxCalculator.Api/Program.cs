@@ -6,7 +6,11 @@ using Fintranet.TaxCalculator.Infrastructure.DbContext;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.Create;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.Delete;
+using Fintranet.TaxCalculator.Application.Features.Passes.Command.Update;
 using Fintranet.TaxCalculator.Application.Features.Passes.Queries.GetAll;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +22,11 @@ builder.Services.AddScoped<IPassRepository, PassRepository>();
 builder.Services.AddScoped<ITaxRuleRepository, TaxRuleRepository>();
 
 builder.Services.AddSingleton<ICongestionTaxStrategyFactory, CongestionTaxStrategyFactory>();
+
+builder.Services.AddTransient<IValidator<CreatePassCommand>, CreatePassCommandValidator>();
+builder.Services.AddTransient<IValidator<DeletePassCommand>, DeletePassCommandValidator>();
+builder.Services.AddTransient<IValidator<UpdatePassCommand>, UpdatePassCommandValidator>();
+
 
 builder.Services.AddSingleton<TaxCalculationService>();
 
