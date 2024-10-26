@@ -49,7 +49,6 @@ public class StandardCongestionTaxStratgyTests
         [Fact]
     public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentDates()
     {
-        // Arrange
         var passes = new List<Pass>
         {
             new Pass { PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car } },
@@ -70,14 +69,12 @@ public class StandardCongestionTaxStratgyTests
             new Pass { PassTime = new DateTime(2013, 3, 28, 14, 7, 27), Vehicle = new Vehicle { VehicleType = VehicleType.Car } }
         };
 
-        // Act & Assert
         await Assert.ThrowsAsync<InvalidOperationException>(() => _strategy.CalculateDailyTaxAsync(passes));
     }
     
         [Fact]
     public async Task CalculateDailyTaxAsync_ShouldCalculateCorrectTax_ForGroupedByDay()
     {
-        // Arrange
         var passes = new List<Pass>
         {
             new Pass { PassTime = new DateTime(2013, 1, 14, 21, 0, 0), Vehicle = new Vehicle { VehicleType = VehicleType.Car } },
@@ -118,6 +115,5 @@ public class StandardCongestionTaxStratgyTests
         Assert.Equal(60, totalTaxList[3]);
         Assert.Equal(8, totalTaxList[4]);
         Assert.Equal(0, totalTaxList[5]);
-
     }
 }
