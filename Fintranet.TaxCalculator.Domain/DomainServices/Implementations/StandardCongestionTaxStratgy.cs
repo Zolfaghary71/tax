@@ -85,7 +85,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             {
                 pass.SupposedTax = CalculateSupposedTax(pass.PassTime.TimeOfDay);
                 pass.IsTaxCalculated = true;
-                pass.HighestInTheHour = 0;
+                pass.ActualTax = 0;
             }
 
             Pass lastHighest = null;
@@ -93,25 +93,29 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             {
                 if (lastHighest == null || lastHighest.PassTime.AddMinutes(60) < pass.PassTime)
                 {
-                    pass.HighestInTheHour = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
-                    dailyTotal = pass.HighestInTheHour;
+                    pass.ActualTax = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
+                    pass.IsTheHighestTax = true;
 
-                    var dailySum = sortedPasses.Where(p => p.IsTheHighestTax).Select(p => p.HighestInTheHour).Sum();
-                    if (dailySum >= dailyTotal)
+                    var dailySum = sortedPasses.Where(p => p.IsTheHighestTax).Select(p => p.ActualTax).Sum();
+                    if (dailySum >= dailyMax)
                     {
-                        if (dailySum > dailyTotal)
-                            pass.HighestInTheHour -= dailySum - dailyMax;
-                        
+                        if (dailySum > dailyMax)
+                            pass.ActualTax -= dailySum - dailyMax;
                         break;
                     }
-
-                    pass.IsTheHighestTax = true;
                     lastHighest = pass;
                     continue;
                 }
 
-                lastHighest.HighestInTheHour = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
+                lastHighest.ActualTax = CalculateHighestTaxLast60Minutes(pass, sortedPasses);
                 pass.IsTheHighestTax = false;
+                var dailytotal = sortedPasses.Where(p => p.IsTheHighestTax).Select(p => p.ActualTax).Sum();
+                if (dailytotal >= dailyMax)
+                {
+                    if (dailytotal > dailyMax)
+                        pass.ActualTax -= dailytotal - dailyMax;
+                    break;
+                }
             }
 
             return sortedPasses;

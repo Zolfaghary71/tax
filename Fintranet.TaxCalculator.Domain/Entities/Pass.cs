@@ -10,5 +10,5 @@ public class Pass:BaseEntity
     public decimal? SupposedTax { get; set; }
     public bool IsTaxCalculated { get; set; }
     public bool IsTheHighestTax { get; set; }
-    public decimal HighestInTheHour { get; set; }
+    public decimal ActualTax { get; set; }
 }

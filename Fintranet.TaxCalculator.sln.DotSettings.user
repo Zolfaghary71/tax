@@ -1,4 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c0df830_002Dab03_002D468d_002D8187_002Db3b51514a2ef/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c0df830_002Dab03_002D468d_002D8187_002Db3b51514a2ef/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from Solution" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Solution /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2560b2c6_002D8616_002D442e_002Daeaa_002De45b8c6ac57e/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CalculateDailyTaxAsync_ShouldThrowException_ForDifferentDates" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::04723E13-54D5-4A91-A05C-F0BA14518749::net8.0::StandardCongestionTaxStratgyTests.CalculateDailyTaxAsync_ShouldThrowException_ForDifferentDates&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::04723E13-54D5-4A91-A05C-F0BA14518749::net8.0::StandardCongestionTaxStratgyTests.CalculateDailyTaxAsync_ShouldCalculateCorrectTax_ForGroupedByDay&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
