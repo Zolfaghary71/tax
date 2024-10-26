@@ -6,6 +6,7 @@ public class Pass:BaseEntity
 {
     public DateTime PassDateTime { get; set; }
     public Vehicle Vehicle { get; set; }
+    public Guid VehicleId  { get; set; }
     public City City { get; set; }
     public decimal? SupposedTax { get; set; }
     public bool IsTaxCalculated { get; set; }

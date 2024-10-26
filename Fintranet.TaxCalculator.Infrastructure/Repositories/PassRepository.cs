@@ -22,7 +22,7 @@ namespace Fintranet.TaxCalculator.Infrastructure.Repositories
             return await _context.Passes.ToListAsync();
         }
 
-        public async Task<Pass> GetByIdAsync(int id)
+        public async Task<Pass> GetByIdAsync(Guid id)
         {
             return await _context.Passes.FindAsync(id);
         }
@@ -45,7 +45,7 @@ namespace Fintranet.TaxCalculator.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Vehicle> GetVehicleByIdAsync(int vehicleId)
+        public async Task<Vehicle> GetVehicleByIdAsync(Guid vehicleId)
         {
             return await _context.Vehicles.FindAsync(vehicleId);
         }

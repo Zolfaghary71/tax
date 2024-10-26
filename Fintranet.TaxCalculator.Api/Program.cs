@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TaxCalculatorDbContext>(options =>
     options.UseInMemoryDatabase("TaxCalculatorDb"));
 
+
 builder.Services.AddScoped<IPassRepository, PassRepository>();
 builder.Services.AddScoped<ITaxRuleRepository, TaxRuleRepository>();
 
@@ -28,6 +29,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<TaxCalculatorDbContext>();
+    context.Database.EnsureCreated();
+}
 
 if (app.Environment.IsDevelopment())
 {

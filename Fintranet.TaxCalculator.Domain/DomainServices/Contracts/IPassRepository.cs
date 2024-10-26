@@ -4,11 +4,11 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Contracts
 {
     public interface IPassRepository
     {
-        Task<Pass> GetByIdAsync(int id);
+        Task<Pass> GetByIdAsync(Guid id);
         Task<IEnumerable<Pass>> GetAllAsync();
         Task AddAsync(Pass pass);
         Task UpdateAsync(Pass pass);
         Task DeleteAsync(Pass pass);
-        Task<Vehicle> GetVehicleByIdAsync(int vehicleId);
+        Task<Vehicle> GetVehicleByIdAsync(Guid vehicleId);
     }
 }

@@ -28,7 +28,7 @@ namespace Fintranet.TaxCalculator.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPassById(int id)
+        public async Task<IActionResult> GetPassById(Guid id)
         {
             var query = new GetPassByIdQuery { Id = id };
             var result = await _mediator.Send(query);
@@ -40,7 +40,7 @@ namespace Fintranet.TaxCalculator.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePass(int id, [FromBody] UpdatePassCommand command)
+        public async Task<IActionResult> UpdatePass(Guid id, [FromBody] UpdatePassCommand command)
         {
             if (id != command.Id)
             {
@@ -55,7 +55,7 @@ namespace Fintranet.TaxCalculator.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePass(int id)
+        public async Task<IActionResult> DeletePass(Guid id)
         {
             var command = new DeletePassCommand { Id = id };
             var result = await _mediator.Send(command);
