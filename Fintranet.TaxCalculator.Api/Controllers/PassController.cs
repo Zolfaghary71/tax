@@ -39,13 +39,9 @@ namespace Fintranet.TaxCalculator.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePass(Guid id, [FromBody] UpdatePassCommand command)
+        [HttpPut]
+        public async Task<IActionResult> UpdatePass(UpdatePassCommand command)
         {
-            if (id != command.Id)
-            {
-                return BadRequest();
-            }
             var result = await _mediator.Send(command);
             if (result == null)
             {

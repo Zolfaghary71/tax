@@ -3,8 +3,6 @@ using Fintranet.TaxCalculator.Domain.DomainServices.Contracts;
 using Fintranet.TaxCalculator.Domain.Entities;
 using Fintranet.TaxCalculator.Infrastructure.DbContext;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Fintranet.TaxCalculator.Infrastructure.Repositories
 {
