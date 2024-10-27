@@ -35,7 +35,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public void CalculateDailyTaxAsync_ShouldSetTaxToZero_ForExemptVehicle()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {
@@ -57,7 +57,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public void CalculateDailyTaxAsync_ShouldThrowException_ForDifferentDates()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {
@@ -131,7 +131,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public void CalculateDailyTaxAsync_ShouldCalculateCorrectTax_ForGroupedByDay()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {
@@ -224,7 +224,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentCities()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {
@@ -244,7 +244,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentVehicles()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {
@@ -264,7 +264,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public async Task CalculateDailyTaxAsync_ShouldThrowException_ForDifferentYears()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {
@@ -284,7 +284,7 @@ public class StandardCongestionTaxStratgyTests
     [Fact]
     public async Task CalculateDailyTaxAsync_ShouldSetTaxToZero_ForExemptDays()
     {
-        var passes = new List<Pass?>
+        var passes = new List<Pass>
         {
             new Pass
             {

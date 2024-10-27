@@ -7,29 +7,27 @@ namespace Fintranet.TaxCalculator.Application.Features.Passes.Command.Calculate
 {
     public class CalculateTaxesCommandHandler : IRequestHandler<CalculateTaxesCommand, VehicleTaxViewModel>
     {
-        private readonly ICongestionTaxStrategyFactory _taxStrategyFactory;
+        private readonly ITaxCalculationService _taxCalculationService;
         private readonly IPassRepository _passRepository;
 
-        public CalculateTaxesCommandHandler(ICongestionTaxStrategyFactory taxStrategyFactory, IPassRepository passRepository)
+        public CalculateTaxesCommandHandler(ITaxCalculationService taxCalculationService, IPassRepository passRepository)
         {
-            _taxStrategyFactory = taxStrategyFactory;
+            _taxCalculationService = taxCalculationService;
             _passRepository = passRepository;
         }
 
         public async Task<VehicleTaxViewModel> Handle(CalculateTaxesCommand request, CancellationToken cancellationToken)
         {
-            var passes = await _passRepository.GetPassesByVehicleIdAsync(request.VehicleId);
-            var vehiclePasses = passes.Where(p => p.City == request.City);
+            var passes = await _passRepository.GetPassesByVehicleIdAndCityAsync(request.VehicleId,request.City);
 
-            var groupedPasses = vehiclePasses.GroupBy(p => p.PassDateTime.Date);
-            var taxStrategy = _taxStrategyFactory.GetStrategy(request.City);
+            var groupedPasses = passes.GroupBy(p => p.PassDateTime.Date);
 
             decimal totalTax = 0;
             var passViewModels = new List<PassCalculationViewModel>();
 
             foreach (var dayPasses in groupedPasses)
             {
-                var taxedPasses = taxStrategy.CalculateDailyTax(dayPasses.ToList());
+                var taxedPasses = _taxCalculationService.CalculateTax(dayPasses.ToList());
                 totalTax += taxedPasses.Sum(p => p.ActualTax);
 
                 passViewModels.AddRange(taxedPasses.Select(p => new PassCalculationViewModel

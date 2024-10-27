@@ -3,7 +3,7 @@ using Fintranet.TaxCalculator.Domain.Entities;
 
 namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 {
-    public class TaxCalculationService
+    public class TaxCalculationService: ITaxCalculationService
     {
         private readonly ICongestionTaxStrategyFactory _strategyFactory;
 
@@ -12,7 +12,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
             _strategyFactory = strategyFactory;
         }
 
-        public async Task<IEnumerable<Pass>>  CalculateTax(IEnumerable<Pass?> passes)
+        public  IEnumerable<Pass>  CalculateTax(IEnumerable<Pass> passes)
         {
             ValidatePasses(passes);
             
@@ -26,7 +26,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
 
             return strategy.CalculateDailyTax(passes.ToList());
         }
-        private void ValidatePasses(IEnumerable<Pass?> passes)
+        private void ValidatePasses(IEnumerable<Pass> passes)
         {
             var firstPass = passes.First();
             var city = firstPass.City;
