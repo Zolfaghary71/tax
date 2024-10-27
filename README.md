@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Congestion Tax Calculator is a web API designed to calculate congestion tax fees for vehicles in Gothenburg, Sweden. The application uses a robust architecture that employs the Strategy and Factory design patterns at the domain level, ensuring it adheres closely to the Open/Closed Principle (OCP).
+The Congestion Tax Calculator is a web API designed to calculate congestion tax fees for vehicles in Gothenburg, Sweden and is able to apply tax rules to other cities with different rules. The application uses a robust architecture that employs the Strategy and Factory design patterns at the domain level, ensuring it adheres closely to the Open/Closed Principle (OCP).
 
 Each pass is taxed based on the highest amount of tax of all passes that come within one hour after it.
 
