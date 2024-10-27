@@ -180,7 +180,7 @@ namespace Fintranet.TaxCalculator.Domain.DomainServices.Implementations
                 new DateTime(2013, 12, 31)
             };
 
-            if (publicHolidays.Contains(date) || publicHolidays.Contains(date.AddDays(1)))
+            if (publicHolidays.Contains(date))
             {
                 return true;
             }

@@ -218,7 +218,7 @@ public class StandardCongestionTaxStratgyTests
         Assert.Equal(21, totalTaxList[2]);
         Assert.Equal(60, totalTaxList[3]);
         Assert.Equal(8, totalTaxList[4]);
-        Assert.Equal(0, totalTaxList[5]);
+        Assert.Equal(8, totalTaxList[5]);
     }
 
     [Fact]
